@@ -8,7 +8,7 @@ services:
     environment:
       - TZ=Asia/Bangkok
       - IPAM_DATABASE_HOST=phpipam-mariadb
-      - IPAM_DATABASE_PASS=my_secret_phpipam_pass
+      - IPAM_DATABASE_PASS=${MYSQL_ROOT_PASSWORD}
       - IPAM_DATABASE_WEBHOST=%
     restart: unless-stopped
     volumes:
@@ -23,7 +23,7 @@ services:
     environment:
       - TZ=Asia/Bangkok
       - IPAM_DATABASE_HOST=phpipam-mariadb
-      - IPAM_DATABASE_PASS=my_secret_phpipam_pass
+      - IPAM_DATABASE_PASS=${MYSQL_ROOT_PASSWORD}
       - SCAN_INTERVAL=1h
     restart: unless-stopped
     volumes:
@@ -35,7 +35,7 @@ services:
     image: mariadb:latest
     environment:
       - TZ=Asia/Bangkok
-      - MYSQL_ROOT_PASSWORD=my_secret_mysql_root_pass
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     restart: unless-stopped
     volumes:
       - phpipam-db-data:/var/lib/mysql
